@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Page</title>
+</head>
+<body>
+    <h1>Student Page</h1>
+    <h2>Students</h2>
+    <ul>
+        {% for student in students %}
+            <li>{{ student.name }}</li>
+            <ul>
+                {% for book in books %}
+                    <li>
+                        <input type="checkbox" name="books" value="{{ book.id }}"
+                            {% if book.student == student %}checked{% endif %}>
+                        {{ book.title }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    </ul>
+    <form method="POST">
+        {% csrf_token %}
+        <select name="student_id">
+            {% for student in students %}
+                <option value="{{ student.id }}">{{ student.name }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Save">
+    </form>
+</body>
+</html>

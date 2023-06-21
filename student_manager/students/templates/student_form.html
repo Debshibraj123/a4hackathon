@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create/Update Students</title>
+  <style>
+    /* styles.css */
+
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    /* Create/Update Student Form */
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 30px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f8f8f8;
+      box-shadow: 20px 20px 20px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    form label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    form input[type="text"],
+    form input[type="email"],
+    form input[type="tel"] {
+      width: 96%;
+      padding: 10px;
+      margin-bottom: 10px;
+      margin-right: 5px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+
+    form input[type="submit"] {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    form input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    .add-button {
+      display: block;
+      margin-top: 10px;
+      text-align: center;
+      text-decoration: none;
+      background-color: #f44336;
+      color: #fff;
+      padding: 10px;
+      border-radius: 4px;
+    }
+
+    .add-button:hover {
+      background-color: #d32f2f;
+    }
+  </style>
+</head>
+<body>
+  <h1>{% if student %}Update Student{% else %}Create Student{% endif %}</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save">
+    <a href="{% url 'student_list' %}" class="add-button">Back</a>
+  </form>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Library - Delete Book</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .confirmation-message {
+            margin-bottom: 10px;
+        }
+
+        .delete-button {
+            padding: 10px 20px;
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .delete-button:hover {
+            background-color: #c82333;
+        }
+
+        .cancel-button {
+            padding: 10px 20px;
+            background-color: #ccc;
+            color: #333;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .cancel-button:hover {
+            background-color: #b3b3b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Library - Delete Book</h1>
+    <div class="confirmation-message">
+        <p>Are you sure you want to delete the book "{{ book.title }}"?</p>
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="delete-button">Delete</button>
+        <a href="{% url 'book_list' %}" class="cancel-button">Cancel</a>
+    </form>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Page</title>
+</head>
+<body>
+    <h1>Book Page</h1>
+    <h2>Books</h2>
+    <ul>
+        {% for book in books %}
+            <li>{{ book.title }}</li>
+            <ul>
+                <form method="POST">
+                    {% csrf_token %}
+                    <select name="students">
+                        <option value=""></option>
+                        {% for student in students %}
+                            <option value="{{ student.id }}"
+                                {% if book.student == student %}selected{% endif %}>
+                                {{ student.name }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                    <input type="hidden" name="book_id" value="{{ book.id }}">
+                    <input type="submit" value="Save">
+                </form>
+            </ul>
+        {% endfor %}
+    </ul>
+</body>
+</html>
