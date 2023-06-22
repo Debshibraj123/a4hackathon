@@ -143,3 +143,7 @@ def register(request):
 def logout(request):
     auth.logout(request)
     return redirect('login')
+
+
+def start_view(request):
+    return render(request, 'index.html')

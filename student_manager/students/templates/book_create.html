@@ -1,145 +1,134 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Library - Add Book</title>
     <style>
-        /* styles.css */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+      }
 
-        /* General Styles */
-        /* styles.css */
+      h1 {
+        text-align: center;
+        margin-top: 30px;
+        color: #333;
+      }
 
-        /* General Styles */
-        body {
-          font-family: Arial, sans-serif;
-          background-color: #f2f2f2;
-        }
-        
-        h1 {
-          text-align: center;
-          margin-top: 30px;
-          color: #333;
-        }
-        
-        .form-container {
-          max-width: 500px;
-          margin: 0 auto;
-          background-color: #fff;
-          padding: 30px;
-          border-radius: 5px;
-          box-shadow: 14px 14px 14px 14px rgba(0, 0, 0, 0.1);
-        }
-        
-        .form-field {
-          margin-bottom: 20px;
-        }
-        
-        .form-label {
-          display: block;
-          font-weight: bold;
-          margin-bottom: 5px;
-          color: #555;
-        }
-        
-        
-    .form-field input{
-  width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-family: Arial, sans-serif;
-  font-size: 14px;
-  color: #333;
-  box-sizing: border-box;
-}
+      .form-container {
+        max-width: 500px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 5px;
+        box-shadow: 14px 14px 14px 14px rgba(0, 0, 0, 0.1);
+      }
 
-/* .form-field input[type="message"]{
-  width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-family: Arial, sans-serif;
-  font-size: 14px;
-  color: #333;
-  box-sizing: border-box;
-} */
+      .form-field {
+        margin-bottom: 20px;
+      }
 
-.form-field input:focus {
-  outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
-}
+      .form-label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #555;
+      }
 
-        
-        .form-submit {
-          display: block;
-          width: 100%;
-          padding: 10px;
-          background-color: #007bff;
-          color: #fff;
-          border: none;
-          border-radius: 5px;
-          cursor: pointer;
-        }
-        
-        .form-submit:hover {
-          background-color: #0056b3;
-        }
-        
-        .back-link {
-          display: block;
-          text-align: center;
-          margin-top: 20px;
-          color: #777;
-          text-decoration: none;
-        }
-        
-        .back-link:hover {
-          text-decoration: underline;
-        }
+      .form-field input {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        color: #333;
+        box-sizing: border-box;
+      }
 
-        
-    .add-button {
-      display: block;
-      margin-top: 10px;
-      text-align: center;
-      text-decoration: none;
-      background-color: #f44336;
-      color: #fff;
-      padding: 10px;
-      border-radius: 4px;
-    }
+      .form-field input[type=""] {
+        width: 20%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        color: #333;
+        box-sizing: border-box;
+      }
 
-    .add-button:hover {
-      background-color: #d32f2f;
-    }
-        
-        
+      .form-field input:focus {
+        outline: none;
+        border-color: #007bff;
+        box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+      }
+
+      .form-submit {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .form-submit:hover {
+        background-color: #0056b3;
+      }
+
+      .back-link {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+        color: #777;
+        text-decoration: none;
+      }
+
+      .back-link:hover {
+        text-decoration: underline;
+      }
+
+      .add-button {
+        display: block;
+        margin-top: 10px;
+        text-align: center;
+        text-decoration: none;
+        background-color: #f44336;
+        color: #fff;
+        padding: 10px;
+        border-radius: 4px;
+      }
+
+      .add-button:hover {
+        background-color: #d32f2f;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Library - Add Book</h1>
     <div class="form-container">
-        <form method="post">
-            {% csrf_token %}
-            <div class="form-field">
-                <label for="id_title" class="form-label">Title:</label>
-                {{ form.title }}
-            </div>
-            <div class="form-field">
-                <label for="id_author" class="form-label">Author:</label>
-                {{ form.author }}
-            </div>
-            <div class="form-field">
-                <label for="id_description" class="form-label">Description:</label>
-                {{ form.description }}
-            </div>
-            <div class="form-field">
-                <label for="id_code" class="form-label">Code:</label>
-                {{ form.code }}
-            </div>
-            <button type="submit" class="form-submit">Save</button>
-            <a href="{% url 'book_list' %}" class="add-button">Back</a>
-        </form>
+      <form method="post">
+        {% csrf_token %}
+        <div class="form-field">
+          <label for="id_title" class="form-label">Title:</label>
+          {{ form.title }}
+        </div>
+        <div class="form-field">
+          <label for="id_author" class="form-label">Author:</label>
+          {{ form.author }}
+        </div>
+        <div class="form-field">
+          <label for="id_description" class="form-label">Description:</label>
+          {{ form.description }}
+        </div>
+        <div class="form-field">
+          <label for="id_code" class="form-label">Code:</label>
+          {{ form.code }}
+        </div>
+        <button type="submit" class="form-submit">Save</button>
+        <a href="{% url 'book_list' %}" class="add-button">Back</a>
+      </form>
     </div>
-</body>
+  </body>
 </html>
